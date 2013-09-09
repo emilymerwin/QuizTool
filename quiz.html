@@ -30,8 +30,6 @@ $(window).load(function(){
 			for (var q=0; q<qArray.length; q++){
 				var tempQ = qArray[q];
 				myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource" style="font-size:12px">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div><div id="img'+q+'" class="images"></div></div>'; 
-				//var myAnswerArr = 'answerArr'+q;
-				//var myImg = 'img'+q;
 				var myAnswerHolder = document.getElementById('answer'+q);
 				myAnswerHolder.innerHTML = "";
 				
@@ -55,18 +53,13 @@ $(window).load(function(){
 					if(tempQ.img != ""){document.getElementById('img'+q).innerHTML = '<img src="'+tempQ.img+'"/>'};
 					if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 				}
-			//	if(('img'+q) != ''){document.getElementById(('img'+q)).innerHTML = '<img src="img'+q+'"/>';}
 			}
 			qWidth = $(".q").width();
 			$('.answers').click(function(event){
 			var target = event.target || event.srcElement;
 				$('#'+target.id).css({'background-color':'#ccc'});				
 				check2(target, event);
-			//	check1(c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,event);
 			});
-		/*	$('#resultsBox').click(function(event){
-				$('#response').hide();
-			})*/
 			function check2(target, event){
 				var target = event.target || event.srcElement;
 				var id = target.id;
@@ -89,121 +82,13 @@ $(window).load(function(){
 						$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
 					}
 				}
-				
-				
 			}
-			//start unchecked code//
-		/*	function check1(c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,event) {
-			var target = event.target || event.srcElement;
-			var id = target.id;
-			switch(id) {
-				case c0 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR1);
-				//$('#readIt').empty().append('<a href="'+link1+'" target="_blank">Read the story</a>');
-				break;
-				case c1 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR2);
-				//$('#readIt').empty().append('<a href="'+link2+'" target="_blank">Read the story</a>');
-				break;
-				case c2 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR3);
-				//$('#readIt').empty().append('<a href="'+link3+'" target="_blank">Read the story</a>');
-				break;
-				case c3 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR4);
-				//$('#readIt').empty().append('<a href="'+link4+'" target="_blank">Read the story</a>');
-				break;
-				case c4 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR5);
-				//$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-				break;
-				case c5 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR6);
-				//$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-				break;
-				case c6 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR7);
-				//$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-				break;
-				case c7 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR8);
-				//$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-				break;
-				case c8 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR9);
-				//$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-				break;
-				case c9 :
-				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer '+$('#'+id).text()+' is correct!</div><br>'+aR10);
-				//$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-				break;
-				default:
-				showWrong();
-				var splitAid = id.split("_");
-					if (splitAid[0]==='a') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c0).text()+'</div><br>'+aR1);
-				//	$('#readIt').empty().append('<a href="'+link1+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='b') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c1).text()+'</div><br>'+aR2);
-				//	$('#readIt').empty().append('<a href="'+link2+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='c') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c2).text()+'</div>'+'<br>'+aR3);
-				//	$('#readIt').empty().append('<a href="'+link3+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='d') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c3).text()+'</div><br>'+aR4);
-				//	$('#readIt').empty().append('<a href="'+link4+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='e') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c4).text()+'</div><br>'+aR5);
-				//	$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='f') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c5).text()+'</div><br>'+aR6);
-				//	$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='g') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c6).text()+'</div><br>'+aR7);
-				//	$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='h') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c7).text()+'</div><br>'+aR8);
-				//	$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='i') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c8).text()+'</div><br>'+aR9);
-				//	$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-					} if (splitAid[0]==='j') {
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: '+$('#'+c9).text()+'</div><br>'+aR10);
-				//	$('#readIt').empty().append('<a href="'+link5+'" target="_blank">Read the story</a>');
-					}  
-				break;
-				}
-			}*/
 
 			//if correct?
 			function showCorrect() {
-
 				goNext(count);
 				$('#resultsBox').fadeIn(100);
 				$('#response').fadeIn(100).css({'border-color':'#22b652'});
-			//	$('#response').delay(500).fadeIn(100).css({'background-color':'#22b652'});
-			/*	$('#result').empty().append('CORRECT');*/
-
 			}
 			//if incorrect?
 			function showWrong() {
@@ -211,8 +96,6 @@ $(window).load(function(){
 				goNext(count);
 				$('#resultsBox').fadeIn(100);
 				$('#response').fadeIn(100).css({'border-color':' #f00'});
-			//	$('#response').delay(500).fadeIn(100).css({'background-color':'#f00'});
-			/*	$('#result').empty().delay(3000).append('INCORRECT');*/
 			}
 
 			//slide to next question
@@ -221,12 +104,10 @@ $(window).load(function(){
 				if(tooFar.left != -((qArray.length-1)*600)) {
 				$('#next').click(function(){
 				$('#resultsBox').hide();
-				//$('#slider').css({'left':tooFar.left-600});
 				$('#slider').animate({left: tooFar.left-600});
 					});
 				} else {
 					countFinal(count);
-				//$('#next').empty().append('See your results');
 				//count total correct and turn into percentage
 				};
 			}
@@ -276,81 +157,20 @@ $(window).load(function(){
 					$('.answers').css({'background-color':'#fff'});
 				});
 			};
-			//end unchecked code
 		})
 	})
-			
-		
 </script>
 </head>
 <body>
 	<div id="quizTitle"></div>
-	<div id="quizBackground"><!--<span style="position:absolute;left:5px;bottom:5px;"><img src="  http://alt.coxnewsweb.com/ajc/_projects_and_planning_group/projects/newsquiz/assets/ajc-logo.png"></span>--></div>
+	<div id="quizBackground"></div>
 	<div id="quizHolder">
 		<div id="resultsBox">
-			<!--<div id="result"></div>-->
 			<div id="response"></div>
-			<!--<div id="readIt"></div>-->
 			<a href="#"><div id="next">next</div></a>
 		</div>
 		<div id="slider">
 			<div id="questions"></div>
-			<!--<div class="q">
-			<div id="loader">
-				<div id="introText">Test your knowledge with this quiz!</div>
-				<div id="begin">Swipe left to begin</div>
-			</div>
-			</div>-->
-		<!--	<div class="q">
-				<div class="questions" id="question1"></div>
-				<div id="answer1" class="answerHolder"></div>
-				<div id="img1" class="images"></div>
-			</div>	
-			<div class="q">
-				<div class="questions" id="question2"></div>
-				<div id="answer2" class="answerHolder"></div>
-				<div id="img2" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question3"></div>
-				<div id="answer3" class="answerHolder"></div>
-				<div id="img3" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question4"></div>
-				<div id="answer4" class="answerHolder"></div>
-				<div id="img4" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question5"></div>
-				<div id="answer5" ></div>
-				<div id="img5" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question6"></div>
-				<div id="answer6" ></div>
-				<div id="img6" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question7"></div>
-				<div id="answer7" ></div>
-				<div id="img7" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question8"></div>
-				<div id="answer8" ></div>
-				<div id="img8" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question9"></div>
-				<div id="answer9" ></div>
-				<div id="img9" class="images"></div>
-			</div>
-			<div class="q">
-				<div class="questions" id="question10"></div>
-				<div id="answer10" ></div>
-				<div id="img10" class="images"></div>
-			</div>-->
 			<div class="q" id="finalResults">
 				<div id="score"></div>
 				<div id="yourScore"></div>
