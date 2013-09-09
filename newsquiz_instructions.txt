@@ -1,0 +1,10 @@
+Instructions for News Quiz:
+
+
+1. Go to http://alt.coxnewsweb.com/ajc/_projects_and_planning_group/newsquiz/newsquiz_input.html to input the questions
+2. Fill out the entire form before clicking "generate code" at the bottom. Image URLs are optional. If you do use an image, however, make sure it's landscape.
+3. Once all the forms are filled out, click "generate code" at the bottom. The code for your week-specific javascript file will be in red on the right side.
+4. Copy and paste this code into a blank javascript file. Save it as the week, like the following example: 'aug511.js' (for August 5-11)
+5. Put this javascript file on the alt server in the weekly_js folder for newsquiz (path from root of alt server: _projects_and_planning_group/newsquiz/weekly_js)
+6. The direct URL for your quiz will be (using the previous example) http://alt.coxnewsweb.com/ajc/_projects_and_planning_group/newsquiz/quiz.html?aug511
+7. To change out the week with the quiz, just change the text in the URL after the ? to the name of your weekly_js file.

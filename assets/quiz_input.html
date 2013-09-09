@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Make a quiz</title>
+<script type="text/javascript">
+
+function generateForm(form){
+	quizTitle=form.quizTitle.value;
+//	chatter=form.chatter.value;
+	numQs=parseInt(form.numQs.value);
+	showPhotos= form.photoyn.checked;
+	storyLinks = form.linksyn.checked;
+	var con=document.getElementById("form2");
+	con.innerHTML=""
+	for (var i=0; i<numQs; i++){
+		con.innerHTML += "<strong>Question "+(i+1)+": </strong><input type='text' name='question"+i+"' size='100' /><br/><blockquote>Option A: <input type='text' name='q"+i+"A' size='80' /><br/>Option B: <input type='text' name='q"+i+"B' size='80' /><br/>Option C: <input type='text' name='q"+i+"C' size='80' /><br/>Option D: <input type='text' name='q"+i+"D' size='80' /></blockquote><br/>Correct answer? (A,B,C,D) <input type='text' name='correct"+i+" size='1'/><br/>Explanation <input type='text' name='explanation"+i+"' size='80'/>";
+		if(showPhotos === true){
+			con.innerHTML += "<br/> Image URL <input type='text' name='img"+i+"' size='80'/><br/>Photo credit <input type='text' name='pcred"+i+"' size='50'/>";
+		}
+		if(storyLinks === true){
+			con.innerHTML += "<br/> Story link <input type='text' name='link"+i+"' size='100'/>";
+		}
+		con.innerHTML += "<hr/>"
+	}
+	
+	con.innerHTML +="<button type='button' onclick='getCode(this.form)'>Get Code</button>";
+}
+function getCode(form){
+//	alert("elements = "+form.elements[0].value)
+	//alert("more elements = "+form.elements[])
+	var con=document.getElementById("code");
+	con.innerHTML="<h4>Copy the below code, paste it into a text file and save with extension .js. Upload to alt server in this directory: http://alt.coxnewsweb.com/ajc/_projects_and_planning_group/iFrame/quizzes/forms_js</h4>var quizTitle = \""+quizTitle+"\";</br>var qArray = [];<br/>";
+			//alert(form)
+			var b = 0;//placeholder for elements
+	for(var a=0; a<numQs; a++){
+		var tempQ = form.elements[b].value;
+		var tempAnswers = ['"'+form.elements[b+1].value+'"', '"'+form.elements[b+2].value+'"', '"'+form.elements[b+3].value+'"', '"'+form.elements[b+4].value+'"'];
+		var tempCorrect = form.elements[b+5].value;	
+		var tempExplainer = form.elements[b+6].value;		
+		b = b+7;
+		if(showPhotos === true){
+			var tempImg = form.elements[b].value;
+			var tempPcred = form.elements[b+1].value;
+			b=b+2;
+		}
+		else{
+			var tempImg = "";
+			var tempPcred = "";
+		}
+		if(storyLinks === true){
+			var tempURL = form.elements[b].value;
+			b=b+1;
+		}
+		else{
+			var tempURL = "";
+		}
+		var myQ = 'question'+a;
+		con.innerHTML += myQ+' = new Object; '+myQ+'.question = "'+tempQ+'"; '+myQ+'.answerArr = ['+tempAnswers+']; '+myQ+'.explanation = "'+tempExplainer+'"; '+myQ+'.correct = "'+tempCorrect+'"; '+myQ+'.img = "'+tempImg+'"; '+myQ+'.pcred = "'+tempPcred+'"; '+myQ+'.URL = "'+tempURL+'";<br/>qArray.push(question'+a+'); <br/>'
+
+	}
+	con.innerHTML += "</br></span>";
+}
+</script>
+</head>
+<body style="font-family:Arial;font-size:12px;width:800px;">
+	<div id="inputs">
+		<form name="qs" method="post">
+			<p><strong>If you don't need a field, leave it blank. <span style="color:red">Do not use double quotes - either escape them (i.e. \") or use single quotes. </span></strong></p>
+			Quiz title: <input type="text" name="quizTitle" size="105"/><br/>
+			<!--Chatter: <input type="text" name="chatter" size="105"/><br/>-->
+			Number of questions: <input type="text" name="numQs" size="5"/><br/>
+			Do you want to include: <input type="checkbox" name="photoyn" value="Photos"/>Photos <input type="checkbox" name="linksyn" value="Links"/>Story links <span style="font-size:10px; color:blue; margin-left:5px">Photos will appear with the question, links will appear with the answer</span><br/>
+			<button type="button" onclick="generateForm(this.form)">Generate form</button><br/>
+		</form><br/><hr/> 
+	</div>
+	<div><form id="form2" name='pointform' method='post'></form></div> 
+	<div id="code"></div>
+</body>
+</html>
