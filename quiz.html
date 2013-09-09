@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quiz</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-
-<LINK REL=StyleSheet HREF="assets/quizstyle2.css" TYPE="text/css">
-	<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
+<title>Quiz</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<link rel=stylesheet href="assets/quizstyle2.css" type="text/css"/>
+<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 <style type="text/css">
 .storylink{
 	color: #004488;
@@ -14,7 +13,6 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="assets/jquery.touchSwipe.js"></script>
 <script type="text/javascript">
-
 var url = window.location.toString();
 var query_string = url.split("?");
 
@@ -26,139 +24,129 @@ $(window).load(function(){
 		$('#resultsBox').hide();
 		document.getElementById('quizTitle').innerHTML = quizTitle;
 		var myContent = document.getElementById('questions');
-		myContent.innerHTML = ""
-			for (var q=0; q<qArray.length; q++){
-				var tempQ = qArray[q];
-				myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource" style="font-size:12px">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div><div id="img'+q+'" class="images"></div></div>'; 
-				var myAnswerHolder = document.getElementById('answer'+q);
-				myAnswerHolder.innerHTML = "";
-				
-				for (var i=0;i<tempQ.answerArr.length;i++){
-					var ansKey = "";
-					if(tempQ.answerArr[i] != ""){
-						if(i == 0){
-							ansKey = "A";
-						}
-						else if(i == 1){
-							ansKey = "B";
-						}
-						else if(i == 2){
-							ansKey = "C"
-						}
-						else if (i == 3){
-							ansKey = "D";
-						}
-						myAnswerHolder.innerHTML += '<a href="#"><div class="answers" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div></a>';
+		myContent.innerHTML = "";
+		for (var q=0; q<qArray.length; q++){
+			var tempQ = qArray[q];
+			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource" style="font-size:12px">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div><div id="img'+q+'" class="images"></div></div>'; 
+			var myAnswerHolder = document.getElementById('answer'+q);
+			myAnswerHolder.innerHTML = "";
+
+			for (var i=0;i<tempQ.answerArr.length;i++){
+				var ansKey = "";
+				if(tempQ.answerArr[i] != ""){
+					if(i == 0){
+						ansKey = "A";
+					} else if(i == 1){
+						ansKey = "B";
+					} else if(i == 2){
+						ansKey = "C"
+					} else if (i == 3){
+						ansKey = "D";
 					}
-					if(tempQ.img != ""){document.getElementById('img'+q).innerHTML = '<img src="'+tempQ.img+'"/>'};
-					if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
+					myAnswerHolder.innerHTML += '<a href="#"><div class="answers" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div></a>';
 				}
+				if(tempQ.img != ""){document.getElementById('img'+q).innerHTML = '<img src="'+tempQ.img+'"/>'};
+				if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 			}
-			qWidth = $(".q").width();
-			$('.answers').click(function(event){
+		}
+		qWidth = $(".q").width();
+		$('.answers').click(function(event){
 			var target = event.target || event.srcElement;
-				$('#'+target.id).css({'background-color':'#ccc'});				
-				check2(target, event);
-			});
-			function check2(target, event){
-				var target = event.target || event.srcElement;
-				var id = target.id;
-
-				var tempArr = id.split("_");
-				var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
-				var selectedAns = tempArr[1]//which answer was selected
-				if(myObj.correct == selectedAns){
-					count++;
-					showCorrect();
-					$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>');
-					if(myObj.URL != ""){
-						$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
-					}
+			$('#'+target.id).css({'background-color':'#ccc'});
+			check2(target, event);
+		});
+		function check2(target, event){
+			var target = event.target || event.srcElement;
+			var id = target.id;
+			var tempArr = id.split("_");
+			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
+			var selectedAns = tempArr[1]//which answer was selected
+			if(myObj.correct == selectedAns){
+				count++;
+				showCorrect();
+				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>');
+				if(myObj.URL != ""){
+					$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
 				}
-				else{
-					showWrong();
-					$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>');//come back to this
-					if(myObj.URL != ""){
-						$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
-					}
+			} else{
+				showWrong();
+				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>');//come back to this
+				if(myObj.URL != ""){
+					$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
 				}
 			}
+		}//check2
 
-			//if correct?
-			function showCorrect() {
-				goNext(count);
-				$('#resultsBox').fadeIn(100);
-				$('#response').fadeIn(100).css({'border-color':'#22b652'});
-			}
-			//if incorrect?
-			function showWrong() {
+		function showCorrect() {
+			goNext(count);
+			$('#resultsBox').fadeIn(100);
+			$('#response').fadeIn(100).css({'border-color':'#22b652'});
+		}
+		function showWrong() {
+			goNext(count);
+			$('#resultsBox').fadeIn(100);
+			$('#response').fadeIn(100).css({'border-color':' #f00'});
+		}
 
-				goNext(count);
-				$('#resultsBox').fadeIn(100);
-				$('#response').fadeIn(100).css({'border-color':' #f00'});
-			}
-
-			//slide to next question
-			function goNext(count) {
-				tooFar = $('#slider').position();
-				if(tooFar.left != -((qArray.length-1)*600)) {
+		function goNext(count) {
+			tooFar = $('#slider').position();
+			if(tooFar.left != -((qArray.length-1)*600)) {
 				$('#next').click(function(){
-				$('#resultsBox').hide();
-				$('#slider').animate({left: tooFar.left-600});
-					});
-				} else {
-					countFinal(count);
-				//count total correct and turn into percentage
-				};
-			}
-
-			//count final score and give final results
-			function countFinal(count){
-				console.log(count);
-				var finalCount = Math.round((count/qArray.length)*100);
-				if(qArray.length >= 8){
-					if (count>=8) {
-						$('#scoreResponse').empty().append("Nice job!");
-					} else if(count >= 6) {
-						$('#scoreResponse').empty().append('So close! You should try again.');
-					} else if(count >= 4) {
-						$('#scoreResponse').empty().append('Hmm. You could do much better.');
-					} else if(count >= 2) {
-						$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-					} else if(count == 1) {
-						$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-					} else if(count == 0) {
-						$('#scoreResponse').empty().append("Do you pay attention at <i>all</i>?");
-					}
-				}
-				else{
-					if (count>=5) {
-						$('#scoreResponse').empty().append("Nice job!");
-					} else if(count >= 4) {
-						$('#scoreResponse').empty().append('So close! You should try again.');
-					} else if(count >= 3) {
-						$('#scoreResponse').empty().append('Hmm. You could do much better.');
-					} else if(count >= 2) {
-						$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-					} else if(count == 1) {
-						$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-					} else if(count == 0) {
-						$('#scoreResponse').empty().append("Do you pay attention at <i>all</i>?");
-					}
-				}
-				
-				$('#yourScore').empty().append('Your score: '+count+'/'+qArray.length);
-				$('#score').empty().append(finalCount+'%');
-
-				$('#tryAgain').click(function(event){
-					count=0;
-					tooFar = $('#slider').position();
-					$("#slider").animate({left:tooFar.left-tooFar.left});
-					$('.answers').css({'background-color':'#fff'});
+					$('#resultsBox').hide();
+					$('#slider').animate({left: tooFar.left-600});
 				});
+			} else {
+				//count total correct and turn into percentage
+				countFinal(count);
 			};
-		})
-	})
+		}//goNext
+
+		//count final score and give final results
+		function countFinal(count){
+			console.log(count);
+			var finalCount = Math.round((count/qArray.length)*100);
+			if(qArray.length >= 8){
+				if (count>=8) {
+					$('#scoreResponse').empty().append("Nice job!");
+				} else if(count >= 6) {
+					$('#scoreResponse').empty().append('So close! You should try again.');
+				} else if(count >= 4) {
+					$('#scoreResponse').empty().append('Hmm. You could do much better.');
+				} else if(count >= 2) {
+					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
+				} else if(count == 1) {
+					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
+				} else if(count == 0) {
+					$('#scoreResponse').empty().append("Do you pay attention at <i>all</i>?");
+				}
+			} else{
+				if (count>=5) {
+					$('#scoreResponse').empty().append("Nice job!");
+				} else if(count >= 4) {
+					$('#scoreResponse').empty().append('So close! You should try again.');
+				} else if(count >= 3) {
+					$('#scoreResponse').empty().append('Hmm. You could do much better.');
+				} else if(count >= 2) {
+					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
+				} else if(count == 1) {
+					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
+				} else if(count == 0) {
+					$('#scoreResponse').empty().append("Do you pay attention at <i>all</i>?");
+				}
+			}
+				
+			$('#yourScore').empty().append('Your score: '+count+'/'+qArray.length);
+			$('#score').empty().append(finalCount+'%');
+
+			$('#tryAgain').click(function(event){
+				count=0;
+				tooFar = $('#slider').position();
+				$("#slider").animate({left:tooFar.left-tooFar.left});
+				$('.answers').css({'background-color':'#fff'});
+			});
+		};//countFinal
+	});//get
+});//window.log
 </script>
 </head>
 <body>
@@ -177,9 +165,9 @@ $(window).load(function(){
 				<div id="scoreResponse"></div>
 				<!--<a href="#"><div id="tryAgain">TRY AGAIN?</div></a>-->
 			</div>
-		</div>	
+		</div>
 	</div>
-	
+
 <script type="text/javascript">
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-28102445-3']);
