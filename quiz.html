@@ -103,38 +103,19 @@ $(window).load(function(){
 
 		//count final score and give final results
 		function countFinal(count){
-			console.log(count);
 			var finalCount = Math.round((count/qArray.length)*100);
-			if(qArray.length >= 8){
-				if (count>=8) {
-					$('#scoreResponse').empty().append("Nice job!");
-				} else if(count >= 6) {
-					$('#scoreResponse').empty().append('So close! You should try again.');
-				} else if(count >= 4) {
-					$('#scoreResponse').empty().append('Hmm. You could do much better.');
-				} else if(count >= 2) {
-					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-				} else if(count == 1) {
-					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-				} else if(count == 0) {
-					$('#scoreResponse').empty().append("Do you pay attention at <i>all</i>?");
-				}
-			} else{
-				if (count>=5) {
-					$('#scoreResponse').empty().append("Nice job!");
-				} else if(count >= 4) {
-					$('#scoreResponse').empty().append('So close! You should try again.');
-				} else if(count >= 3) {
-					$('#scoreResponse').empty().append('Hmm. You could do much better.');
-				} else if(count >= 2) {
-					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-				} else if(count == 1) {
-					$('#scoreResponse').empty().append("Not so hot. Maybe next time?");
-				} else if(count == 0) {
-					$('#scoreResponse').empty().append("Do you pay attention at <i>all</i>?");
-				}
+			if (finalCount > 80) {
+				resultText = "Nice job!";
+			} else if(finalCount >= 60) {
+				resultText = "So close! You should try again.";
+			} else if(finalCount >= 40) {
+				resultText = "Hmm. You could do much better.";
+			} else if(finalCount >= 20) {
+				resultText = "Not so hot. Maybe next time?";
+			} else {
+				resultText = "Do you pay attention at <i>all</i>?";
 			}
-				
+			$('#scoreResponse').empty().append(resultText);
 			$('#yourScore').empty().append('Your score: '+count+'/'+qArray.length);
 			$('#score').empty().append(finalCount+'%');
 
