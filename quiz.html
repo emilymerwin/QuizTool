@@ -18,15 +18,13 @@ var query_string = url.split("?");
 
 $(window).load(function(){  
 	$.get('forms_js/'+query_string[1]+'.js', function(){
-		var count = 0;
-		var tooFar = 0;
-		var qWidth;
+		var count = 0, tooFar = 0;
 		document.getElementById('quizTitle').innerHTML = quizTitle;
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
 		for (var q=0; q<qArray.length; q++){
 			var tempQ = qArray[q];
-			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource" style="font-size:12px">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
+			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
 			var myAnswerHolder = document.getElementById('answer'+q);
 			myAnswerHolder.innerHTML = "";
 
@@ -48,14 +46,12 @@ $(window).load(function(){
 			if(tempQ.img !== ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
 			if(tempQ.pcred !== ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 		}
-		qWidth = $(".q").width();
 		$('.answers').click(function(event){
 			var target = event.target || event.srcElement;
 			$('#'+target.id).css({'background-color':'#ccc'});
 			check2(target, event);
 		});
 		function check2(target, event){
-			var target = event.target || event.srcElement;
 			var id = target.id;
 			var tempArr = id.split("_");
 			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
@@ -81,7 +77,6 @@ $(window).load(function(){
 					$('#slider').animate({left: tooFar.left-600});
 				});
 			} else {
-				//count total correct and turn into percentage
 				countFinal();
 			};
 		}//goNext
@@ -101,10 +96,9 @@ $(window).load(function(){
 			} else {
 				resultText = "Do you pay attention at <i>all</i>?";
 			}
-			$('#scoreResponse').empty().append(resultText);
+			$('#scoreResponse').empty().append(resultText);//why do we have empty on these? Is it because we used to play the same game with try again
 			$('#yourScore').empty().append('Your score: '+count+'/'+qArray.length);
 			$('#score').empty().append(finalCount+'%');
-
 			$('#tryAgain').click(function(event){
 				window.parent.location.reload();
 			});

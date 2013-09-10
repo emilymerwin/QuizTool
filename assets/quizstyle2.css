@@ -8,6 +8,7 @@ body {
 .cmSource{
 	text-align:right bottom;
 	color: #9B9B9B;
+	font-size:12px
 }
 #quizHolder {
 	width:590px;
