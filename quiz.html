@@ -32,21 +32,21 @@ $(window).load(function(){
 
 			for (var i=0;i<tempQ.answerArr.length;i++){
 				var ansKey = "";
-				if(tempQ.answerArr[i] != ""){
-					if(i == 0){
+				if(tempQ.answerArr[i] !== ""){
+					if(i === 0){
 						ansKey = "A";
-					} else if(i == 1){
+					} else if(i === 1){
 						ansKey = "B";
-					} else if(i == 2){
+					} else if(i === 2){
 						ansKey = "C"
-					} else if (i == 3){
+					} else if (i === 3){
 						ansKey = "D";
 					}
 					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
 				}
 			}
-			if(tempQ.img != ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
-			if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
+			if(tempQ.img !== ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
+			if(tempQ.pcred !== ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 		}
 		qWidth = $(".q").width();
 		$('.answers').click(function(event){
@@ -60,13 +60,13 @@ $(window).load(function(){
 			var tempArr = id.split("_");
 			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
 			var selectedAns = tempArr[1]//which answer was selected
-			if(myObj.correct == selectedAns){
+			if(myObj.correct === selectedAns){
 				count++;
 				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
 			} else{
 				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
 			}
-			if(myObj.URL != ""){
+			if(myObj.URL !== ""){
 				$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
 			}
 			$('#resultsBox').show();
@@ -75,7 +75,7 @@ $(window).load(function(){
 
 		function goNext() {
 			tooFar = $('#slider').position();
-			if(tooFar.left != -((qArray.length-1)*600)) {
+			if(tooFar.left !== -((qArray.length-1)*600)) {
 				$('#next').click(function(){
 					$('#resultsBox').hide();
 					$('#slider').animate({left: tooFar.left-600});
