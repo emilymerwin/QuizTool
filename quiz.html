@@ -23,6 +23,7 @@ $(window).load(function(){
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
 		var numQs = qArray.length;
+		var ansKeyArr = ["A", "B", "C", "D"];
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
 			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
@@ -30,17 +31,8 @@ $(window).load(function(){
 			myAnswerHolder.innerHTML = "";
 
 			for (var i=0;i<tempQ.answerArr.length;i++){
-				var ansKey = "";
-				if(tempQ.answerArr[i] !== ""){
-					if(i === 0){
-						ansKey = "A";
-					} else if(i === 1){
-						ansKey = "B";
-					} else if(i === 2){
-						ansKey = "C"
-					} else if (i === 3){
-						ansKey = "D";
-					}
+				if(tempQ.answerArr[i] !== ""){//if question has fewer than 4 answer choices they will populate through the form as "" so we can't use the length property
+					var ansKey = ansKeyArr[i];
 					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
 				}
 			}
