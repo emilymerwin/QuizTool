@@ -1,10 +1,6 @@
-/*@font-face { font-family: AmericanTypewriter; src: url('http://alt.coxnewsweb.com/ajc/_projects_and_planning_group/newsquiz/assets/AmericanTypewriter.ttc'); } */
-
 body {
 	margin:0px;
 	width:609px;
-	/*font-family:AmericanTypewriter;
-	font-size:12px;*/
 }
 .btn{
 	cursor: pointer;
@@ -52,7 +48,6 @@ body {
 	padding:10px;
 	margin-bottom:10px;
 	font-size:18px;
-	font-family:AmericanTypewriter;
 }
 
 .answerHolder {
@@ -115,7 +110,6 @@ body {
 }
 
 #next {
-/*	font-family:AmericanTypewriter;*/
 	font-size:18px;
 	width:170px;
 	height:20px;
@@ -125,7 +119,6 @@ body {
 	position:absolute;
 	text-align:center;
 	right:20px;
-	/*bottom:80px;*/
 	padding:10px;
 	-moz-box-shadow: 1px 1px 5px #ccc;
 	-webkit-box-shadow: 1px 1px 5px #ccc;
@@ -139,7 +132,6 @@ body {
 	margin:10px auto;
 	text-align:center;
 	font-size:28px;
-	font-family:AmericanTypewriter;
 }
 
 #score {
@@ -152,7 +144,6 @@ body {
 	background-color: #fff;
 	font-size:80px;
 	text-align:center;
-	font-family:AmericanTypewriter;
 	text-shadow: 2px 3px #ccc;
 }
 
@@ -160,7 +151,6 @@ body {
 	margin:10px auto;
 	font-size:22px;
 	text-align:center;
-	font-family:AmericanTypewriter;
 }
 
 #tryAgain {
@@ -183,7 +173,6 @@ body {
 #finalResults {
 	width:600px;
 	height:400px;
-
 }
 
 #quizTitle {
@@ -192,7 +181,6 @@ body {
 	text-align:center;
 	height:45px;
 	font-size:40px;
-	/*font-family:AmericanTypewriter;*/
 }
 
 #week {/*not in use currently*/
