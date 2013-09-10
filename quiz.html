@@ -99,9 +99,9 @@ $(window).load(function(){
 			$('#scoreResponse').empty().append(resultText);//why do we have empty on these? Is it because we used to play the same game with try again
 			$('#yourScore').empty().append('Your score: '+count+'/'+qArray.length);
 			$('#score').empty().append(finalCount+'%');
-			$('#tryAgain').click(function(event){
+		/*	$('#tryAgain').click(function(event){
 				window.parent.location.reload();
-			});
+			});*/
 		};//countFinal
 	});//get
 });//window.log
@@ -121,7 +121,7 @@ $(window).load(function(){
 				<div id="score"></div>
 				<div id="yourScore"></div>
 				<div id="scoreResponse"></div>
-				<div id="tryAgain" class="btn">TRY AGAIN?</div>
+				<!--<div id="tryAgain" class="btn">TRY AGAIN?</div>-->
 			</div>
 		</div>
 	</div>
