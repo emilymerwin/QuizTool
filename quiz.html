@@ -124,10 +124,7 @@ $(window).load(function(){
 			$('#score').empty().append(finalCount+'%');
 
 			$('#tryAgain').click(function(event){
-				count=0;
-				tooFar = $('#slider').position();
-				$("#slider").animate({left:tooFar.left-tooFar.left});
-				$('.answers').css({'background-color':'#fff'});
+				window.parent.location.reload();
 			});
 		};//countFinal
 	});//get
