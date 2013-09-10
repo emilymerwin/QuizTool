@@ -29,7 +29,7 @@ $(window).load(function(){
 		myContent.innerHTML = "";
 		for (var q=0; q<qArray.length; q++){
 			var tempQ = qArray[q];
-			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource" style="font-size:12px">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div><div id="img'+q+'" class="images"></div></div>'; 
+			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource" style="font-size:12px">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
 			var myAnswerHolder = document.getElementById('answer'+q);
 			myAnswerHolder.innerHTML = "";
 
@@ -47,9 +47,9 @@ $(window).load(function(){
 					}
 					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
 				}
-				if(tempQ.img != ""){document.getElementById('img'+q).innerHTML = '<img src="'+tempQ.img+'"/>'};
-				if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 			}
+			if(tempQ.img != ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
+			if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 		}
 		qWidth = $(".q").width();
 		$('.answers').click(function(event){
