@@ -22,9 +22,10 @@ $(window).load(function(){
 		document.getElementById('quizTitle').innerHTML = quizTitle;
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
-		for (var q=0; q<qArray.length; q++){
+		var numQs = qArray.length;
+		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
-			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+qArray.length+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
+			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
 			var myAnswerHolder = document.getElementById('answer'+q);
 			myAnswerHolder.innerHTML = "";
 
