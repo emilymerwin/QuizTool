@@ -6,9 +6,6 @@
 <link rel=stylesheet href="assets/quizstyle2.css" type="text/css"/>
 <link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 <style type="text/css">
-.storylink{
-	color: #004488;
-}
 #finalResults, #resultsBox{
 	display:none;
 }
@@ -68,13 +65,13 @@ $(window).load(function(){
 				showCorrect();
 				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>');
 				if(myObj.URL != ""){
-					$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
+					$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
 				}
 			} else{
 				showWrong();
 				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>');//come back to this
 				if(myObj.URL != ""){
-					$('#response').append('<p><a class="storylink" href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
+					$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
 				}
 			}
 		}//check2
