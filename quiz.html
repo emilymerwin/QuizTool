@@ -9,6 +9,9 @@
 .storylink{
 	color: #004488;
 }
+#finalResults, #resultsBox{
+	display:none;
+}
 </style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="assets/jquery.touchSwipe.js"></script>
@@ -103,6 +106,7 @@ $(window).load(function(){
 
 		//count final score and give final results
 		function countFinal(count){
+			$('#finalResults').show();
 			var finalCount = Math.round((count/qArray.length)*100);
 			if (finalCount > 80) {
 				resultText = "Nice job!";
