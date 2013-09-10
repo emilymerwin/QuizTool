@@ -62,32 +62,18 @@ $(window).load(function(){
 			var selectedAns = tempArr[1]//which answer was selected
 			if(myObj.correct == selectedAns){
 				count++;
-				showCorrect();
-				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>');
-				if(myObj.URL != ""){
-					$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
-				}
+				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
 			} else{
-				showWrong();
-				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>');//come back to this
-				if(myObj.URL != ""){
-					$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
-				}
+				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
 			}
+			if(myObj.URL != ""){
+				$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
+			}
+			$('#resultsBox').show();
+			goNext();
 		}//check2
 
-		function showCorrect() {
-			goNext(count);
-			$('#resultsBox').fadeIn(100);
-			$('#response').fadeIn(100).css({'border-color':'#22b652'});
-		}
-		function showWrong() {
-			goNext(count);
-			$('#resultsBox').fadeIn(100);
-			$('#response').fadeIn(100).css({'border-color':' #f00'});
-		}
-
-		function goNext(count) {
+		function goNext() {
 			tooFar = $('#slider').position();
 			if(tooFar.left != -((qArray.length-1)*600)) {
 				$('#next').click(function(){
@@ -96,12 +82,12 @@ $(window).load(function(){
 				});
 			} else {
 				//count total correct and turn into percentage
-				countFinal(count);
+				countFinal();
 			};
 		}//goNext
 
 		//count final score and give final results
-		function countFinal(count){
+		function countFinal(){
 			$('#finalResults').show();
 			var finalCount = Math.round((count/qArray.length)*100);
 			if (finalCount > 80) {
