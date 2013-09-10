@@ -6,10 +6,8 @@ body {
 	/*font-family:AmericanTypewriter;
 	font-size:12px;*/
 }
-
-a, a:hover, a:visited {
-	color:#000;
-	text-decoration:none;
+.btn{
+	cursor: pointer;
 }
 .cmSource{
 	text-align:right bottom;

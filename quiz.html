@@ -46,7 +46,7 @@ $(window).load(function(){
 					} else if (i == 3){
 						ansKey = "D";
 					}
-					myAnswerHolder.innerHTML += '<a href="#"><div class="answers" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div></a>';
+					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
 				}
 				if(tempQ.img != ""){document.getElementById('img'+q).innerHTML = '<img src="'+tempQ.img+'"/>'};
 				if(tempQ.pcred != ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
@@ -140,7 +140,7 @@ $(window).load(function(){
 	<div id="quizHolder">
 		<div id="resultsBox">
 			<div id="response"></div>
-			<a href="#"><div id="next">next</div></a>
+			<div id="next" class="btn">next</div>
 		</div>
 		<div id="slider">
 			<div id="questions"></div>
@@ -148,7 +148,7 @@ $(window).load(function(){
 				<div id="score"></div>
 				<div id="yourScore"></div>
 				<div id="scoreResponse"></div>
-				<!--<a href="#"><div id="tryAgain">TRY AGAIN?</div></a>-->
+				<div id="tryAgain" class="btn">TRY AGAIN?</div>
 			</div>
 		</div>
 	</div>
