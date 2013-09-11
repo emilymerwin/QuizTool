@@ -6,9 +6,6 @@ question0.answerArr = ["A: change Neither to Either", "B: change nor to or", "C:
 question0.explanation = "Problem: Both answers C and D are needed to make the sentence correct.";
 question0.sourced = "Source: Georgia Department of Education";
 question0.correct = "E";
-question0.img = "";
-question0.pcred = "";
-question0.URL = "";
 qArray.push(question0);
 question1 = new Object;
 question1.question = "Which factor is MOST closely associated with an increase in the price of a good?";
@@ -16,9 +13,6 @@ question1.answerArr = ["increased worker productivity", "increased technological
 question1.explanation = "Problem: Poorly worded – performed poorly.";
 question1.sourced = "Source: Georgia Department of Education";
 question1.correct = "E";
-question1.img = "";
-question1.pcred = "";
-question1.URL = "";
 qArray.push(question1);
 question2 = new Object;
 question2.question = "A construction worker is laid off from his job every winter but is rehired in the spring. What kind of unemployment does the construction worker experience?";
@@ -26,9 +20,6 @@ question2.answerArr = ["cyclical", "frictional", "structural", "recessional", "s
 question2.explanation = "Problem: Has no correct answer. “Seasonal” would have been a better option.";
 question2.sourced = "Source: Georgia Department of Education";
 question2.correct = "E";
-question2.img = "";
-question2.pcred = "";
-question2.URL = "";
 qArray.push(question2);
 question3 = new Object;
 question3.question = "Andrew Lloyd Webber’s occupation is:";
@@ -36,7 +27,4 @@ question3.answerArr = ["Playwright", "Painter", "Sculptor", "Athlete", "Composer
 question3.explanation = "Problem: No correct answer. Webber is a composer and producer.";
 question3.sourced = "Source: CTB McGraw-Hill e-mail/Georgia Department of Education. Question is paraphrased based on documents obtained from the state.";
 question3.correct = "E";
-question3.img = "";
-question3.pcred = "";
-question3.URL = "";
 qArray.push(question3);
