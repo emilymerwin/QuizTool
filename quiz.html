@@ -33,7 +33,7 @@ $(window).load(function(){
 
 			for (var i=0;i<tempQ.answerArr.length;i++){
 					var ansKey = ansKeyArr[i];
-					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
+					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'">'+ansKey+": "+tempQ.answerArr[i]+'</div>';
 			}
 		}
 		$('.answers').click(function(event){
@@ -50,7 +50,7 @@ $(window).load(function(){
 				count++;
 				$('#response').empty().append('<div class="correctAnswer">You got it right, but this answer wasn\'t an option on the actual test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':'#FFBA33'});
 			} else{
-				$('#response').empty().append('<div class="correctAnswer">The correct answer should have been "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'", even though that wasn\'t an option on the test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':' #f00'});//come back to this
+				$('#response').empty().append('<div class="correctAnswer">The correct answer should have been "'+myObj.correct+'", even though that wasn\'t an option on the test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':' #f00'});
 			}
 			$('#resultsBox').show();
 			goNext();
