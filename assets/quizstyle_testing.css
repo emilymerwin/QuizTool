@@ -1,8 +1,3 @@
-
-/*.answerHolder {
-	height:170px;
-}*/
-
 .answers {
 	height:20px;
 	border-radius:5px;
@@ -10,18 +5,17 @@
 	
 #resultsBox {
 	top:240px;
-	left:0px;
 }
 
-#response {/*How is this different form #resultbox? It's not just the response text - look into it*/
+#response {
 	height:90px;
 }
 
 #yourScore{
-/*	width:250px;
-	height:50px;*/
+	border-bottom:2px solid #ccc;	
 }
 
 #scoreResponse {
 	width:80%;
+	text-align:left;
 }
