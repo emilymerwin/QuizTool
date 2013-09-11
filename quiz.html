@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Quiz</title>
+<title>Can you guess what’s wrong?</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-<link rel=stylesheet href="assets/quizstyle2.css" type="text/css"/>
+<link rel=stylesheet href="assets/quizstyle_testing.css" type="text/css"/>
 <link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 <style type="text/css">
 #finalResults, #resultsBox{
@@ -19,11 +19,11 @@ var query_string = url.split("?");
 $(window).load(function(){  
 	$.get('forms_js/'+query_string[1]+'.js', function(){
 		var count = 0, tooFar = 0;
-		document.getElementById('quizTitle').innerHTML = quizTitle;
+		//document.getElementById('quizTitle').innerHTML = quizTitle;
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
 		var numQs = qArray.length;
-		var ansKeyArr = ["A", "B", "C", "D"];
+		var ansKeyArr = ["A", "B", "C", "D", "E"];
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
 			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
@@ -51,9 +51,10 @@ $(window).load(function(){
 			var selectedAns = tempArr[1]//which answer was selected
 			if(myObj.correct === selectedAns){
 				count++;
-				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
+				//$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
+				$('#response').empty().append('<div class="correctAnswer">You got it right, but this answer wasn\'t an option on the actual test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':'#FFBA33'});
 			} else{
-				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
+				$('#response').empty().append('<div class="correctAnswer">The correct answer should have been "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'", even though that wasn\'t an option on the test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':' #f00'});//come back to this
 			}
 			if(myObj.URL !== ""){
 				$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
@@ -77,7 +78,7 @@ $(window).load(function(){
 		//count final score and give final results
 		function countFinal(){
 			$('#finalResults').show();
-			var finalCount = Math.round((count/numQs)*100);
+			/*var finalCount = Math.round((count/numQs)*100);
 			if (finalCount > 80) {
 				resultText = "Nice job!";
 			} else if(finalCount >= 60) {
@@ -88,8 +89,8 @@ $(window).load(function(){
 				resultText = "Not so hot. Maybe next time?";
 			} else {
 				resultText = "Do you pay attention at <i>all</i>?";
-			}
-			$('#scoreResponse').empty().append(resultText);//why do we have empty on these? Is it because we used to play the same game with try again
+			}*/
+			$('#scoreResponse').empty().append("<p>Georgia education officials demanded that the first three questions be removed from high school End-of-Course Tests. In a separate incident, officials first ordered a different contractor to drop the fourth question, but then agreed to allow it to be counted in scores. More problems later surfaced with that test and it was eventually invalidated.</p>");//why do we have empty on these? Is it because we used to play the same game with try again
 			$('#yourScore').empty().append('Your score: '+count+'/'+numQs);
 			$('#score').empty().append(finalCount+'%');
 		/*	$('#tryAgain').click(function(event){
@@ -101,21 +102,21 @@ $(window).load(function(){
 </script>
 </head>
 <body>
-	<div id="quizTitle"></div>
+	<!--<div id="quizTitle"></div>
+	<p>Forget about the answers, can you spot the problems with the following test questions? All appeared on actual exams given to Georgia students.</p>-->
 	<div id="quizBackground"></div>
 	<div id="quizHolder">
-		<div id="resultsBox">
-			<div id="response"></div>
-			<div id="next" class="btn">next</div>
-		</div>
 		<div id="slider">
 			<div id="questions"></div>
 			<div class="q" id="finalResults">
-				<div id="score"></div>
 				<div id="yourScore"></div>
 				<div id="scoreResponse"></div>
 				<!--<div id="tryAgain" class="btn">TRY AGAIN?</div>-->
 			</div>
+		</div>
+		<div id="resultsBox">
+			<div id="response"></div>
+			<div id="next" class="btn">next</div>
 		</div>
 	</div>
 
