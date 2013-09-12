@@ -6,34 +6,27 @@
 	color: #9B9B9B;
 	font-size:12px
 }
-#quizHolder {
-	width:590px;
+/*come back to this later - seems like we might be able to get rid of it since we are inside an iframe so overflow we be hidden anyway*/
+#quizHolder {/*contains results box and slider*/
+	width:600px;
 	height:900px;
 	overflow:hidden;
 	position:absolute;
-	/*top:0; left:0;*/
 }
-.q {
-	display:inline;
+.q {/*each question and answer slide lives inside one of these*/
 	float:left;
 	width:600px;
-	height:400px;
 }
 
 #slider {
 	width:10200px;
-	height:400px;
 	position:absolute;
-	top:0px;
-	left:0px;
 }
 
-.questions {
-	width:580px;
+.questions {/*text of each question*/
 	border-bottom:2px solid #ccc;
 	padding:10px;
 	margin-bottom:10px;
-	font-size:18px;
 }
 
 .answers {
@@ -43,36 +36,19 @@
 	padding:7px;
 	border:1px solid #ccc;
 	border-radius:10px;
-	display:inline;
 	float:left;
-	background-color:#fff;
 	-moz-box-shadow: 1px 1px 5px #888;
 	-webkit-box-shadow: 1px 1px 5px#888;
 	box-shadow: 1px 1px 5px #888;
 
 }
 	
-#resultsBox {
-	width:600px;
+#resultsBox {/*holds the response area and next button*/
+	width:600px;/*this width is helping us center the response box. I don't understand why but it is*/
 	height:100%;
 	position:absolute;
-	top:0px;
-	left:0px;
 	opacity:0.9;
 	z-index:100;
-	color:#fff;
-}
-	
-#result {
-	margin:30px auto;
-	width:350px;
-	height:65px;
-	font-size:60px;
-	text-align:center;
-	position:relative;
-	font-weight:normal;
-	font-weight:semi-bold;
-	text-shadow:2px 3px #333;
 }
 
 #response {/*How is this different form #resultbox? It's not just the response text - look into it*/
@@ -82,9 +58,6 @@
 	border-radius: 10px;
 	border:8px solid white;
 	background-color:#fff;
-	color:#000;
-	z-index:105;
-	position:relative;
 	padding:15px;
 	-moz-box-shadow: 1px 1px 10px #888;
 	-webkit-box-shadow: 1px 1px 10px #888;
@@ -109,9 +82,7 @@
 }
 
 #yourScore{
-	width:250px;
-	height:50px;
-	margin:10px auto;
+	margin:10px auto 15px auto;
 	text-align:center;
 	font-size:28px;
 }
@@ -123,108 +94,34 @@
 	padding:10px;
 	border-radius:10px;
 	border:2px solid #000;
-	background-color: #fff;
 	font-size:80px;
 	text-align:center;
 	text-shadow: 2px 3px #ccc;
 }
 
 #scoreResponse {
-	margin:10px auto;
 	font-size:22px;
 	text-align:center;
 }
 
-#tryAgain {
-	width:165px;
-	height:30px;
-	padding:10px;
-	background-color:#444444;
-	color:#fff;
-	font-size:26px;
-	text-align:center;
-	margin:auto;
-	border-radius:10px;
-	-moz-box-shadow: 2px 2px 10px #ccc;
-	-webkit-box-shadow: 2px 2px 10px #ccc;
-	box-shadow: 2px 2px 10px #ccc;
-	/*transform:rotate(-7deg);*/
-	-webkit-transform:rotate(-7deg);
-}
-
-#finalResults {
-	width:600px;
-	height:400px;
-}
-
 #quizTitle {
 	margin:10px auto;
-	width:610px;
+	/*width:610px;*/
 	text-align:center;
-	height:45px;
+	/*height:45px;*/
 	font-size:40px;
 }
 
-#week {/*not in use currently*/
-	width:250px;
-	margin:10px auto 20px auto;
-	font-size:24px;
-}
-
-#introText {/*not in use currently*/
-	margin:10px auto;
-	width:550px;
-	font-size:20px;
-	text-align:center;
-}
-
-
-#begin {
-	width:300px;
-	height:90px;
-	background-color:#000;
-	background-repeat:no-repeat;
-	color:#fff;
-	position:relative;
-	margin:30px auto;
-	font-size:35px;
-	-moz-box-shadow: 2px 2px 5px #888;
-	-webkit-box-shadow: 2px 2px 5px #888;
-	box-shadow: 2px 2px 5px #888;
-	border-radius:15px;
-	text-align:center;
-}
-
-#loader{width:600px;height:400px;position:absolute;}
+/*#loader{width:600px;height:400px;position:absolute;}*/
 
 .images {
-	max-width:560px;
-	max-height:800px;
-	margin:5px auto;
 	text-align:center;
-	padding:0px;
 }
 
-.images img {/*not in use currently*/
-padding:0px;
-margin:0px;
+.images img {
 max-width:560px;
 max-height:800px;
-border:1px solid #ccc;
 -moz-box-shadow: 2px 2px 5px #888;
 -webkit-box-shadow: 2px 2px 5px #888;
 box-shadow: 2px 2px 5px #888;
-}
-
-#readIt, #readIt a, #readIt a:hover, #readIt a:visited{
-	width:300px;
-	height:30px;
-	margin:5px auto;
-	text-align:center;
-	font-size:18px;
-	font-weight:bold;
-	color:#fff;
-	text-decoration:underline;
-}
-
 }
