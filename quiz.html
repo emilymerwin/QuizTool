@@ -28,7 +28,7 @@ $(window).load(function(){
 		var ansKeyArr = ["A", "B", "C", "D"];
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
-			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
+			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'"></div></div>'; 
 			var myAnswerHolder = document.getElementById('answer'+q);
 			myAnswerHolder.innerHTML = "";
 
