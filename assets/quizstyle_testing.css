@@ -10,7 +10,9 @@
 #response {
 	height:90px;
 }
-
+#response p{
+	padding:0;
+}
 #yourScore{
 	border-bottom:2px solid #ccc;	
 }
@@ -18,4 +20,5 @@
 #scoreResponse {
 	width:80%;
 	text-align:left;
+	margin:auto;
 }
