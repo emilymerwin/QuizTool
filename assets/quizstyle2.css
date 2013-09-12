@@ -13,17 +13,6 @@
 	position:absolute;
 	/*top:0; left:0;*/
 }
-
-#quizBackground {
-	background-color:#fdfdfd;
-	opacity:0.8;
-	z-index:-10;
-	position:absolute;
-	top:0; left:0;
-	width:590px;
-	height:400px;
-}
-
 .q {
 	display:inline;
 	float:left;
