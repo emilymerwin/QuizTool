@@ -53,9 +53,9 @@ $(window).load(function(){
 			var selectedAns = tempArr[1]//which answer was selected
 			if(myObj.correct === selectedAns){
 				count++;
-				$('#response').empty().append('<div class="correctAnswer">The answer "'+$('#'+id).text()+'" is correct!</div><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
+				$('#response').empty().append('<p><strong>The answer "'+$('#'+id).text()+'" is correct!</strong></p><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
 			} else{
-				$('#response').empty().append('<div class="correctAnswer">Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</div><br><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
+				$('#response').empty().append('<p><strong>Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</strong></p><br><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
 			}
 			if(myObj.URL !== ""){
 				$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
