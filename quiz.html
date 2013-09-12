@@ -20,7 +20,7 @@ var query_string = url.split("?");
 
 $(window).load(function(){  
 	$.get('forms_js/'+query_string[1]+'.js', function(){
-		var count = 0, tooFar = 0;
+		var count = 0, tooFar = 0, slideWidth = $('#quizHolder').width();
 		document.getElementById('quizTitle').innerHTML = quizTitle;
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
@@ -66,10 +66,10 @@ $(window).load(function(){
 
 		function goNext() {
 			tooFar = $('#slider').position();
-			if(tooFar.left !== -((numQs-1)*600)) {
+			if(tooFar.left !== -((numQs-1)*slideWidth)) {
 				$('#next').click(function(){
 					$('#resultsBox').hide();
-					$('#slider').animate({left: tooFar.left-600});
+					$('#slider').animate({left: tooFar.left-slideWidth});
 				});
 			} else {
 				countFinal();

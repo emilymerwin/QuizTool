@@ -1,3 +1,27 @@
+@media only screen and (min-width: 320px) {
+	#quizHolder{
+		width:320px;
+	} 
+	.q{
+		width:320px;
+	} 
+	.images img{
+		max-width:100%; 
+		max-height: 500px;
+	}
+}
+@media only screen and (min-width: 600px) {
+	#quizHolder{
+		width:600px;
+	}
+	.q{
+		width:600px;
+	}
+	.images img{
+		max-width:560px;
+		max-height:800px;
+	}
+}
 .btn{
 	cursor: pointer;
 }
@@ -8,14 +32,12 @@
 }
 /*come back to this later - seems like we might be able to get rid of it since we are inside an iframe so overflow we be hidden anyway*/
 #quizHolder {/*contains results box and slider*/
-	width:600px;
 	height:900px;
 	overflow:hidden;
 	position:absolute;
 }
 .q {/*each question and answer slide lives inside one of these*/
 	float:left;
-	width:600px;
 }
 
 #slider {
@@ -44,7 +66,7 @@
 }
 	
 #resultsBox {/*holds the response area and next button*/
-	width:600px;/*this width is helping us center the response box. I don't understand why but it is*/
+	width:100%;
 	height:100%;
 	position:absolute;
 	opacity:0.9;
@@ -52,8 +74,8 @@
 }
 
 #response {/*How is this different form #resultbox? It's not just the response text - look into it*/
-	width:450px;
-	height:200px;
+	max-width:450px;
+	min-height:200px;
 	margin:15px auto;
 	border-radius: 10px;
 	border:8px solid white;
@@ -106,9 +128,7 @@
 
 #quizTitle {
 	margin:10px auto;
-	/*width:610px;*/
 	text-align:center;
-	/*height:45px;*/
 	font-size:40px;
 }
 
@@ -119,8 +139,6 @@
 }
 
 .images img {
-max-width:560px;
-max-height:800px;
 -moz-box-shadow: 2px 2px 5px #888;
 -webkit-box-shadow: 2px 2px 5px #888;
 box-shadow: 2px 2px 5px #888;
