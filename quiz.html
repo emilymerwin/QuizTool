@@ -28,7 +28,7 @@ $(window).load(function(){
 		var ansKeyArr = ["A", "B", "C", "D", "E"];
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
-			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'" class="answerHolder"></div></div>'; 
+			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'"></div></div>'; 
 			var myAnswerHolder = document.getElementById('answer'+q);
 			myAnswerHolder.innerHTML = "";
 
@@ -49,9 +49,9 @@ $(window).load(function(){
 			var selectedAns = tempArr[1]//which answer was selected
 			if(myObj.correct === selectedAns){
 				count++;
-				$('#response').empty().append('<div class="correctAnswer">You got it right, but this answer wasn\'t an option on the actual test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':'#FFBA33'});
+				$('#response').empty().append('<p><strong>You got it right, but this answer wasn\'t an option on the actual test.</strong></p><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':'#FFBA33'});
 			} else{
-				$('#response').empty().append('<div class="correctAnswer">The correct answer should have been "'+myObj.correct+'", even though that wasn\'t an option on the test.</div><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':' #f00'});
+				$('#response').empty().append('<p><strong>The correct answer should have been "'+myObj.correct+'", even though that wasn\'t an option on the test.</strong></p><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':' #f00'});
 			}
 			$('#resultsBox').show();
 			goNext();
@@ -83,7 +83,6 @@ $(window).load(function(){
 </script>
 </head>
 <body>
-	<div id="quizBackground"></div>
 	<div id="quizHolder">
 		<div id="slider">
 			<div id="questions"></div>
