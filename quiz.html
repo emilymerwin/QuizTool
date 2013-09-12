@@ -47,12 +47,26 @@ $(window).load(function(){
 			var tempArr = id.split("_");
 			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
 			var selectedAns = tempArr[1]//which answer was selected
+			var responseTxt, borderColor;
 			if(myObj.correct === selectedAns){
 				count++;
-				$('#response').empty().append('<p><strong>You got it right, but this answer wasn\'t an option on the actual test.</strong></p><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':'#FFBA33'});
+				borderColor = '#FFBA33';
+				if(tempArr[0] === "0"){
+					responseTxt = 'According to the state, this is the right answer, though it';
+				}
+				else{
+					responseTxt = 'You got it right, but this answer';
+				}
 			} else{
-				$('#response').empty().append('<p><strong>The correct answer should have been "'+myObj.correct+'", even though that wasn\'t an option on the test.</strong></p><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':' #f00'});
+				borderColor = '#f00';
+				if(tempArr[0] === "0"){
+					responseTxt = 'According to the state, the correct answer should have been "E", though it';
+				}
+				else{
+					responseTxt = 'The correct answer should have been "'+myObj.correct+'", though it';
+				}
 			}
+			$('#response').empty().append('<p><strong>'+responseTxt+' wasn\'t an option on the actual test.</strong></p><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':borderColor});
 			$('#resultsBox').show();
 			goNext();
 		}//check2
