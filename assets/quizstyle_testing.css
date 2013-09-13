@@ -8,7 +8,7 @@
 }
 
 #response {
-	height:90px;
+	min-height:70px;
 }
 #response p{
 	padding:0;
