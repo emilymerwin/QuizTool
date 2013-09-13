@@ -1,7 +1,7 @@
 var qArray = [];
 question0 = new Object;
 question0.question = "Which correction should be made to the sentence? <br>Neither Andrea nor Caleb will tell what they seen.";
-question0.answerArr = ["change Neither to Either", "change nor to or", "change they to he", "change seen to saw", "None of the above"];
+question0.answerArr = ["change Neither to Either", "change nor to or", "change they to he", "change seen to saw", "none of the above"];
 question0.explanation = "";
 question0.sourced = "Source: Georgia Department of Education";
 question0.correct = "E";
