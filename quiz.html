@@ -13,15 +13,14 @@
 	display:none;
 }
 </style>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="assets/jquery.touchSwipe.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
 var url = window.location.toString();
 var query_string = url.split("?");
 
 $(window).load(function(){  
 	$.get('forms_js/'+query_string[1]+'.js', function(){
-		var count = 0, tooFar = 0;
+		var count = 0, tooFar = 0, slideWidth = $('#quizHolder').width();
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
 		var numQs = qArray.length;
@@ -73,10 +72,10 @@ $(window).load(function(){
 
 		function goNext() {
 			tooFar = $('#slider').position();
-			if(tooFar.left !== -((numQs-1)*600)) {
+			if(tooFar.left !== -((numQs-1)*slideWidth)) {
 				$('#next').click(function(){
 					$('#resultsBox').hide();
-					$('#slider').animate({left: tooFar.left-600});
+					$('#slider').animate({left: tooFar.left-slideWidth});
 				});
 			} else {
 				countFinal();
@@ -86,11 +85,7 @@ $(window).load(function(){
 		//count final score and give final results
 		function countFinal(){
 			$('#finalResults').show();
-			$('#scoreResponse').empty().append("<p>Georgia education officials demanded that the first three questions be removed from high school End-of-Course Tests. In a separate incident, officials first ordered a different contractor to drop the fourth question, but then agreed to allow it to be counted in scores. More problems later surfaced with that test and it was eventually invalidated.</p>");//why do we have empty on these? Is it because we used to play the same game with try again
-			$('#yourScore').empty().append('Your score: '+count+'/'+numQs);
-		/*	$('#tryAgain').click(function(event){
-				window.parent.location.reload();
-			});*/
+			$('#finalResults').append('<div id="yourScore">Your score: '+count+'/'+numQs+'</div><div id="scoreResponse"><p>Georgia education officials demanded that the first three questions be removed from high school End-of-Course Tests. In a separate incident, officials first ordered a different contractor to drop the fourth question, but then agreed to allow it to be counted in scores. More problems later surfaced with that test and it was eventually invalidated.</p></div>');
 		};//countFinal
 	});//get
 });//window.log
@@ -100,11 +95,7 @@ $(window).load(function(){
 	<div id="quizHolder">
 		<div id="slider">
 			<div id="questions"></div>
-			<div class="q" id="finalResults">
-				<div id="yourScore"></div>
-				<div id="scoreResponse"></div>
-				<!--<div id="tryAgain" class="btn">TRY AGAIN?</div>-->
-			</div>
+			<div class="q" id="finalResults"></div>
 		</div>
 		<div id="resultsBox">
 			<div id="response"></div>
