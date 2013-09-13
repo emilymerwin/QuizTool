@@ -47,21 +47,18 @@ $(window).load(function(){
 			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
 			var selectedAns = tempArr[1]//which answer was selected
 			var responseTxt, borderColor;
+			if(tempArr[0]=== "0"){
+				responseTxt = 'According to the state, both answers "C" and "D" are needed to make the sentence correct. This';
+			}
 			if(myObj.correct === selectedAns){
 				count++;
 				borderColor = '#FFBA33';
-				if(tempArr[0] === "0"){
-					responseTxt = 'According to the state, this is the right answer, though it';
-				}
-				else{
+				if(tempArr[0] !== "0"){
 					responseTxt = 'You got it right, but this answer';
 				}
 			} else{
 				borderColor = '#f00';
-				if(tempArr[0] === "0"){
-					responseTxt = 'According to the state, the correct answer should have been "E", though it';
-				}
-				else{
+				if(tempArr[0] !== "0"){
 					responseTxt = 'The correct answer should have been "'+myObj.correct+'", though it';
 				}
 			}
