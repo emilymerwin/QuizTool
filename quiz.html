@@ -91,12 +91,7 @@ $(window).load(function(){
 			} else {
 				resultText = "Do you pay attention at <i>all</i>?";
 			}
-			$('#scoreResponse').append(resultText);
-			$('#yourScore').append('Your score: '+count+'/'+numQs);
-			$('#score').append(finalCount+'%');
-		/*	$('#tryAgain').click(function(event){
-				window.parent.location.reload();
-			});*/
+			$('#finalResults').append('<div id="score">'+finalCount+'%</div><div id="yourScore">Your score: '+count+'/'+numQs+'</div><div id="scoreResponse">'+resultText+'</div>');
 		};//countFinal
 	});//get
 });//window.log
@@ -111,12 +106,7 @@ $(window).load(function(){
 		</div>
 		<div id="slider">
 			<div id="questions"></div>
-			<div class="q" id="finalResults">
-				<div id="score"></div>
-				<div id="yourScore"></div>
-				<div id="scoreResponse"></div>
-				<!--<div id="tryAgain" class="btn">TRY AGAIN?</div>-->
-			</div>
+			<div class="q" id="finalResults"></div>
 		</div>
 	</div>
 
