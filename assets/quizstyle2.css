@@ -68,12 +68,11 @@
 	width:170px;
 	height:20px;
 	background-color:#fff;
-	color:#000;
 	border-radius: 10px;
-	position:absolute;
 	text-align:center;
-	right:20px;
 	padding:10px;
+	float:right;
+	margin: 0 10px;
 	-moz-box-shadow: 1px 1px 5px #ccc;
 	-webkit-box-shadow: 1px 1px 5px #ccc;
 	box-shadow: 1px 1px 5px #ccc;
@@ -116,6 +115,7 @@
 }
 
 .images img {
+	margin-top:10px;
 	max-width:560px;
 	max-height:800px;
 	-moz-box-shadow: 2px 2px 5px #888;
