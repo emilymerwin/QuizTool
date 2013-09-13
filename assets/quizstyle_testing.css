@@ -7,6 +7,7 @@
 	top:240px;
 }
 
+@media only screen and (max-width: 599px) {#resultsBox{top:150px;}}
 #response {
 	min-height:70px;
 }
