@@ -1,15 +1,16 @@
 .answers {
 	height:20px;
-	border-radius:5px;
+	border-radius:0;
+	box-shadow:none;
 }
 	
 #resultsBox {
-	top:240px;
+	top:220px;
 }
-
 @media only screen and (max-width: 599px) {#resultsBox{top:150px;}}
 #response {
 	min-height:70px;
+	border-radius:0;
 }
 #response p{
 	padding:0;
@@ -17,7 +18,14 @@
 #yourScore{
 	border-bottom:2px solid #ccc;	
 }
-
+#next{
+	font-size:15px;
+	padding:7px;
+	height:auto;
+	width:60px;
+	border:1px solid #ccc;
+	border-radius:0;
+}
 #scoreResponse {
 	width:80%;
 	text-align:left;
