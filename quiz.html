@@ -5,8 +5,8 @@
 <base target="_parent"/>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<link rel="stylesheet" href="http://alt.coxnewsweb.com/ajc/_newsapps/libraries/css/ajc/myajc.css" type="text/css"/>
 <link rel=stylesheet href="assets/quizstyle2.css" type="text/css"/>
-<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 <style type="text/css">
 #finalResults, #resultsBox{
 	display:none;
@@ -34,7 +34,7 @@ $(window).load(function(){
 			for (var i=0;i<tempQ.answerArr.length;i++){
 				if(tempQ.answerArr[i] !== ""){//if question has fewer than 4 answer choices they will populate through the form as "" so we can't use the length property
 					var ansKey = ansKeyArr[i];
-					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
+					myAnswerHolder.innerHTML += '<div class="answers quiz_btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
 				}
 			}
 			if(tempQ.img !== ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
@@ -52,9 +52,9 @@ $(window).load(function(){
 			var selectedAns = tempArr[1]//which answer was selected
 			if(myObj.correct === selectedAns){
 				count++;
-				$('#response').empty().append('<p><strong>The answer "'+$('#'+id).text()+'" is correct!</strong></p><br><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
+				$('#response').empty().append('<p><strong>The answer "'+$('#'+id).text()+'" is correct!</strong></p><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
 			} else{
-				$('#response').empty().append('<p><strong>Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</strong></p><br><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
+				$('#response').empty().append('<p><strong>Correct answer: "'+$(('#'+tempArr[0]+"_"+myObj.correct)).text()+'"</strong></p><p>'+myObj.explanation+'</p>').css({'border-color':' #f00'});//come back to this
 			}
 			if(myObj.URL !== ""){
 				$('#response').append('<p><a href="'+myObj.URL+'" target="_blank">Read the story</a></p>');
@@ -97,18 +97,19 @@ $(window).load(function(){
 </script>
 </head>
 <body>
+<div class="flatpages">
 	<div id="quizTitle"></div>
 	<div id="quizHolder">
 		<div id="resultsBox">
 			<div id="response"></div>
-			<div id="next" class="btn">next</div>
+			<div id="next" class="quiz_btn">next</div>
 		</div>
 		<div id="slider">
 			<div id="questions"></div>
 			<div class="q" id="finalResults"></div>
 		</div>
 	</div>
-
+</div>
 <script type="text/javascript">
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-28102445-3']);
