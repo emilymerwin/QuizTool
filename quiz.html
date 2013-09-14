@@ -5,9 +5,9 @@
 <base target="_parent"/>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<link rel="stylesheet" href="http://alt.coxnewsweb.com/ajc/_newsapps/libraries/css/ajc/myajc.css" type="text/css"/>
 <link rel=stylesheet href="assets/quizstyle2.css" type="text/css"/>
 <link rel=stylesheet href="assets/quizstyle_testing.css" type="text/css"/>
-<link rel="stylesheet" href="http://host.coxmediagroup.com/ajc/digitalprojects/global/css/iFrame_Medley.css" type="text/css"/>
 <style type="text/css">
 #finalResults, #resultsBox{
 	display:none;
@@ -33,7 +33,7 @@ $(window).load(function(){
 
 			for (var i=0;i<tempQ.answerArr.length;i++){
 					var ansKey = ansKeyArr[i];
-					myAnswerHolder.innerHTML += '<div class="answers btn" id="'+q+'_'+ansKey+'">'+ansKey+": "+tempQ.answerArr[i]+'</div>';
+					myAnswerHolder.innerHTML += '<div class="answers quiz_btn" id="'+q+'_'+ansKey+'">'+ansKey+": "+tempQ.answerArr[i]+'</div>';
 			}
 		}
 		$('.answers').click(function(event){
@@ -62,7 +62,7 @@ $(window).load(function(){
 					responseTxt = 'The correct answer should have been "'+myObj.correct+'", though it';
 				}
 			}
-			$('#response').empty().append('<p><strong>'+responseTxt+' wasn\'t an option on the actual test.</strong></p><br><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':borderColor});
+			$('#response').empty().append('<p><strong>'+responseTxt+' wasn\'t an option on the actual test.</strong></p><p>'+myObj.explanation+'</p><p class="cmSource">'+myObj.sourced+'</p>').css({'border-color':borderColor});
 			$('#resultsBox').show();
 			goNext();
 		}//check2
@@ -89,6 +89,7 @@ $(window).load(function(){
 </script>
 </head>
 <body>
+<div class="flatpages">
 	<div id="quizHolder">
 		<div id="slider">
 			<div id="questions"></div>
@@ -96,10 +97,10 @@ $(window).load(function(){
 		</div>
 		<div id="resultsBox">
 			<div id="response"></div>
-			<div id="next" class="btn">next</div>
+			<div id="next" class="quiz_btn">next</div>
 		</div>
 	</div>
-
+</div>
 <script type="text/javascript">
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
