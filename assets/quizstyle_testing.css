@@ -7,7 +7,6 @@
 #resultsBox {
 	top:220px;
 }
-@media only screen and (max-width: 599px) {#resultsBox{top:150px;}}
 #response {
 	min-height:70px;
 	border-radius:0;
@@ -31,4 +30,12 @@
 	text-align:left;
 	margin:auto;
 	font-size:inherit;
+}
+@media only screen and (max-width: 599px) {
+	#resultsBox{
+		top:150px;
+	}
+	#scoreResponse{
+		width:100%;
+	}
 }
