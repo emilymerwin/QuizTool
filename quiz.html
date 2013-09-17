@@ -40,6 +40,10 @@ $(window).load(function(){
 			if(tempQ.img !== ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
 			if(tempQ.pcred !== ""){document.getElementById('img'+q).innerHTML+= '<p class="cmSource">'+tempQ.pcred+'</p>'}
 		}
+		if(slideWidth <= 599){
+			$(".q").css("width", slideWidth);
+		}
+		
 		$('.answers').click(function(event){
 			var target = event.target || event.srcElement;
 			$('#'+target.id).css({'background-color':'#ccc'});

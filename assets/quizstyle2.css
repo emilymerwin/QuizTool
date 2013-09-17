@@ -8,14 +8,14 @@
 }
 /*come back to this later - seems like we might be able to get rid of it since we are inside an iframe so overflow we be hidden anyway*/
 #quizHolder {/*contains results box and slider*/
-	width:600px;
+	width:610px;
 	height:900px;
 	overflow:hidden;
 	position:absolute;
 }
 .q {/*each question and answer slide lives inside one of these*/
 	float:left;
-	width:600px;
+	width:610px;
 }
 
 #slider {
@@ -123,14 +123,21 @@
 	box-shadow: 2px 2px 5px #888;
 }
 @media only screen and (max-width: 599px){
-	#quizHolder{
-		width:320px;
+	#quizTitle{
+		font-size:35px;
 	}
-	.q{
-		width:320px;
+	#quizHolder{
+		width:100%;
+	}
+	.questions{
+		padding:0;
 	}
 	.images img{
-		max-width:100%;
-		max-height: 500px;
+		max-width:95%;
+	}
+	.answers{
+		width:90%;
+		margin:5px auto;
+		float:none;
 	}
 }
