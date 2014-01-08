@@ -69,7 +69,7 @@ $(window).load(function(){
 
 		function goNext() {
 			tooFar = $('#slider').position();
-			if(tooFar.left !== -((numQs-1)*slideWidth)) {
+			if(tooFar.left > -((numQs-1)*slideWidth)) {
 				$('#next').click(function(){
 					$('#resultsBox').hide();
 					$('#slider').animate({left: tooFar.left-slideWidth});
