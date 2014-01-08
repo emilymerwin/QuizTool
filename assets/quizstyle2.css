@@ -1,12 +1,12 @@
-.quiz_btn{
-	cursor: pointer;
+.quiz_btn {
+	cursor:pointer;
 }
-.cmSource{
+.cmSource {
 	text-align:right bottom;
-	color: #9B9B9B;
+	color:#9B9B9B;
 	font-size:12px
 }
-/*come back to this later - seems like we might be able to get rid of it since we are inside an iframe so overflow we be hidden anyway*/
+/*come back to this later - seems like we might be able to get rid of it since we are inside an iframe so overflow would be hidden anyway*/
 #quizHolder {/*contains results box and slider*/
 	width:610px;
 	height:900px;
@@ -40,7 +40,7 @@
 	-webkit-box-shadow: 1px 1px 5px#888;
 	box-shadow: 1px 1px 5px #888;
 }
-	
+
 #resultsBox {/*holds the response area and next button*/
 	width:100%;
 	height:100%;
@@ -78,7 +78,7 @@
 
 }
 
-#yourScore{
+#yourScore {
 	margin:10px auto 15px auto;
 	text-align:center;
 	font-size:28px;
@@ -121,20 +121,20 @@
 	-webkit-box-shadow: 2px 2px 5px #888;
 	box-shadow: 2px 2px 5px #888;
 }
-@media only screen and (max-width: 599px){
-	#quizTitle{
+@media only screen and (max-width: 599px) {
+	#quizTitle {
 		font-size:35px;
 	}
-	#quizHolder{
+	#quizHolder {
 		width:100%;
 	}
-	.questions{
+	.questions {
 		padding:0;
 	}
-	.images img{
+	.images img {
 		max-width:95%;
 	}
-	.answers{
+	.answers {
 		width:90%;
 		margin:5px auto;
 		float:none;

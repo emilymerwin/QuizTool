@@ -14,18 +14,15 @@
 </style>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
-var url = window.location.toString();
-var query_string = url.split("?");
+var url = window.location.toString(), query_string = url.split("?");
 
 $(window).load(function(){  
 	$.get('forms_js/'+query_string[1]+'.js', function(){
-		var count = 0, tooFar = 0, slideWidth = $('#quizHolder').width();
+		var count = 0, tooFar = 0, slideWidth = $('#quizHolder').width(), myContent = document.getElementById('questions'), numQs = qArray.length, ansKeyArr = ["A", "B", "C", "D"];;
 		document.getElementById('quizTitle').innerHTML = quizTitle;
-		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
-		var numQs = qArray.length;
 		$("#slider").width((numQs+1)*slideWidth); //add 1 to leave room for results slide
-		var ansKeyArr = ["A", "B", "C", "D"];
+
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
 			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'"></div></div>'; 
@@ -34,8 +31,7 @@ $(window).load(function(){
 
 			for (var i=0;i<tempQ.answerArr.length;i++){
 				if(tempQ.answerArr[i] !== ""){//if question has fewer than 4 answer choices they will populate through the form as "" so we can't use the length property
-					var ansKey = ansKeyArr[i];
-					myAnswerHolder.innerHTML += '<div class="answers quiz_btn" id="'+q+'_'+ansKey+'" >'+tempQ.answerArr[i]+'</div>';
+					myAnswerHolder.innerHTML += '<div class="answers quiz_btn" id="'+q+'_'+ansKeyArr[i]+'" >'+tempQ.answerArr[i]+'</div>';
 				}
 			}
 			if(tempQ.img !== ""){$(document.getElementById('question'+q)).parent().append('<div id="img'+q+'" class="images"><img src="'+tempQ.img+'"/></div>')};
@@ -44,17 +40,14 @@ $(window).load(function(){
 		if(slideWidth <= 599){
 			$(".q").css("width", slideWidth);
 		}
-		
+
 		$('.answers').click(function(event){
 			var target = event.target || event.srcElement;
 			$('#'+target.id).css({'background-color':'#ccc'});
 			check2(target, event);
 		});
 		function check2(target, event){
-			var id = target.id;
-			var tempArr = id.split("_");
-			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
-			var selectedAns = tempArr[1]//which answer was selected
+			var id = target.id, tempArr = id.split("_"), selectedAns = tempArr[1], myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
 			if(myObj.correct === selectedAns){
 				count++;
 				$('#response').empty().append('<p><strong>The answer "'+$('#'+id).text()+'" is correct!</strong></p><p>'+myObj.explanation+'</p>').css({'border-color':'#22b652'});
@@ -83,7 +76,7 @@ $(window).load(function(){
 		//count final score and give final results
 		function countFinal(){
 			$('#finalResults').show();
-			var finalCount = Math.round((count/numQs)*100);
+			var resultText, finalCount = Math.round((count/numQs)*100);
 			if (finalCount > 80) {
 				resultText = "Nice job!";
 			} else if(finalCount >= 60) {
@@ -98,7 +91,7 @@ $(window).load(function(){
 			$('#finalResults').append('<div id="score">'+finalCount+'%</div><div id="yourScore">Your score: '+count+'/'+numQs+'</div><div id="scoreResponse">'+resultText+'</div>');
 		};//countFinal
 	});//get
-});//window.log
+});//window.load
 </script>
 </head>
 <body>
