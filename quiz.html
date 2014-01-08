@@ -125,5 +125,20 @@ $(window).load(function(){
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 </script>
+<script type="text/javascript" src="flatpage_stubs.js"></script>
+<script>
+// Have to add flatpage_stubs.js above this script
+var i = 0;
+document.body.onclick = function(e){
+							i += 1;
+							// Track in metrics
+							cmg.s_coxnews.utilities.track_event(42, null, ["eVar40", "interactive_photoquiz"], ["prop42", "eVar42", "ajc"], "Interaction in photo quizes");
+							if(i === 3){
+								i = 0;
+								// Refresh ads
+								Adgeletti.refresh();
+							}
+						}
+</script>
 </body>
 </html>
