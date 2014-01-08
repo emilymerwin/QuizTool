@@ -24,6 +24,7 @@ $(window).load(function(){
 		var myContent = document.getElementById('questions');
 		myContent.innerHTML = "";
 		var numQs = qArray.length;
+		$("#slider").width((numQs+1)*slideWidth); //add 1 to leave room for results slide
 		var ansKeyArr = ["A", "B", "C", "D"];
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
