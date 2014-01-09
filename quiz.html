@@ -15,16 +15,14 @@
 </style>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
-var url = window.location.toString();
-var query_string = url.split("?");
+var url = window.location.toString(), query_string = url.split("?");
 
 $(window).load(function(){  
 	$.get('forms_js/'+query_string[1]+'.js', function(){
-		var count = 0, tooFar = 0, slideWidth = $('#quizHolder').width();
-		var myContent = document.getElementById('questions');
+		var count = 0, tooFar = 0, slideWidth = $('#quizHolder').width(), myContent = document.getElementById('questions'), numQs = qArray.length, ansKeyArr = ["A", "B", "C", "D"];;
 		myContent.innerHTML = "";
-		var numQs = qArray.length;
-		var ansKeyArr = ["A", "B", "C", "D", "E"];
+		$("#slider").width((numQs+1)*slideWidth); //add 1 to leave room for results slide
+
 		for (var q=0; q<numQs; q++){
 			var tempQ = qArray[q];
 			myContent.innerHTML+= '<div class="q"><div class="questions" id="question'+q+'"><span class="cmSource">Question '+(q+1)+'/'+numQs+':</span><p> '+tempQ.question+'</p></div><div id="answer'+q+'"></div></div>'; 
@@ -32,24 +30,20 @@ $(window).load(function(){
 			myAnswerHolder.innerHTML = "";
 
 			for (var i=0;i<tempQ.answerArr.length;i++){
-					var ansKey = ansKeyArr[i];
-					myAnswerHolder.innerHTML += '<div class="answers quiz_btn" id="'+q+'_'+ansKey+'">'+ansKey+": "+tempQ.answerArr[i]+'</div>';
+					myAnswerHolder.innerHTML += '<div class="answers quiz_btn" id="'+q+'_'+ansKeyArr[i]+'" >'+tempQ.answerArr[i]+'</div>';
 			}
 		}
 		if(slideWidth <= 599){
 			$(".q").css("width", slideWidth);
 		}
-		
+
 		$('.answers').click(function(event){
 			var target = event.target || event.srcElement;
 			$('#'+target.id).css({'background-color':'#ccc'});
 			check2(target, event);
 		});
 		function check2(target, event){
-			var id = target.id;
-			var tempArr = id.split("_");
-			var myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
-			var selectedAns = tempArr[1]//which answer was selected
+			var id = target.id, tempArr = id.split("_"), selectedAns = tempArr[1], myObj = qArray[parseInt(tempArr[0])];//which object do we need to look at?
 			var responseTxt, borderColor;
 			if(tempArr[0]=== "0"){
 				responseTxt = 'According to the state, both answers "C" and "D" are needed to make the sentence correct. This';
@@ -73,7 +67,7 @@ $(window).load(function(){
 
 		function goNext() {
 			tooFar = $('#slider').position();
-			if(tooFar.left !== -((numQs-1)*slideWidth)) {
+			if(tooFar.left > -((numQs-1)*slideWidth)) {
 				$('#next').click(function(){
 					$('#resultsBox').hide();
 					$('#slider').animate({left: tooFar.left-slideWidth});
@@ -89,7 +83,7 @@ $(window).load(function(){
 			$('#finalResults').append('<div id="yourScore">Your score: '+count+'/'+numQs+'</div><div id="scoreResponse"><p>Georgia education officials demanded that the first three questions be removed from high school End-of-Course Tests. In a separate incident, officials first ordered a different contractor to drop the fourth question, but then agreed to allow it to be counted in scores. More problems later surfaced with that test and it was eventually invalidated.</p></div>');
 		};//countFinal
 	});//get
-});//window.log
+});//window.load
 </script>
 </head>
 <body>
@@ -113,6 +107,21 @@ $(window).load(function(){
 
 	  ga('create', 'UA-28102445-5', 'myajc.com');
 	  ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="flatpage_stubs.js"></script>
+<script>
+// Have to add flatpage_stubs.js above this script
+var i = 0;
+document.body.onclick = function(e){
+							i += 1;
+							// Track in metrics
+							cmg.s_coxnews.utilities.track_event(42, null, ["eVar40", "interactive_photoquiz"], ["prop42", "eVar42", "ajc"], "Interaction in photo quizes");
+							if(i === 3){
+								i = 0;
+								// Refresh ads
+								Adgeletti.refresh();
+							}
+						}
 </script>
 </body>
 </html>
